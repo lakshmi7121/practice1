@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TicketEase - Online Ticket Booking</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    background: #0b1020;
+    color: white;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 8%;
+    background: #11182c;
+    border-bottom: 1px solid #252e48;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+    color: #a78bfa;
+}
+
+nav a {
+    color: #ddd;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 15px;
+}
+
+nav a:hover {
+    color: #a78bfa;
+}
+
+.login {
+    background: #8054ed;
+    color: white;
+    padding: 11px 23px;
+    border-radius: 25px;
+    text-decoration: none;
+}
+
+.hero {
+    padding: 85px 8% 65px;
+    text-align: center;
+    background: linear-gradient(120deg, #21134c, #142b53, #10172e);
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.hero h1 span {
+    color: #a78bfa;
+}
+
+.hero p {
+    color: #c4c7d5;
+    font-size: 18px;
+    margin-bottom: 35px;
+}
+
+.booking {
+    background: white;
+    color: #222;
+    max-width: 1050px;
+    margin: auto;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 15px 45px #0005;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.tabs button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    background: #eeeafa;
+    color: #49318b;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.tabs button.active,
+.tabs button:hover {
+    background: #8054ed;
+    color: white;
+}
+
+.search-form {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.search-form input,
+.search-form select {
+    flex: 1;
+    min-width: 150px;
+    padding: 16px;
+    border: 1px solid #ddd;
+    border-radius: 9px;
+    outline: none;
+    color: #333;
+    background: white;
+}
+
+.search-btn {
+    background: #8054ed;
+    color: white;
+    border: none;
+    padding: 16px 30px;
+    border-radius: 9px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.search-btn:hover {
+    background: #6034cb;
+}
+
+.section {
+    padding: 65px 8%;
+}
+
+.section h2 {
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: #171f35;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.3s;
+    border: 1px solid #29334d;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: #a78bfa;
+}
+
+.poster {
+    height: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 65px;
+    background: linear-gradient(135deg, #5334a5, #1b7191);
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h3 {
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    color: #b5bfd2;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.book-btn {
+    display: inline-block;
+    background: #8054ed;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.features {
+    background: #131c32;
+    padding: 45px 8%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px;
+    text-align: center;
+}
+
+.feature {
+    padding: 15px;
+}
+
+.feature span {
+    font-size: 35px;
+}
+
+.feature h3 {
+    margin: 12px 0;
+    color: #a78bfa;
+}
+
+.feature p {
+    color: #b5bfd2;
+    font-size: 14px;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #090e1c;
+    color: #9ca3af;
+}
+
+@media(max-width: 700px) {
+    header {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    nav a {
+        margin: 6px;
+        display: inline-block;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .search-form {
+        flex-direction: column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🎟 TicketEase</div>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#movies">Movies</a>
+        <a href="#travel">Travel</a>
+        <a href="#features">Services</a>
+    </nav>
+
+    <a href="#booking" class="login">Sign In</a>
+</header>
+
+<section class="hero">
+    <h1>Your Journey <span>Starts Here!</span></h1>
+    <p>Book movies, buses, trains and flights in one place.</p>
+
+    <div class="booking" id="booking">
+
+        <div class="tabs">
+            <button class="active" onclick="changeTab('Movie',this)">🎬 Movies</button>
+            <button onclick="changeTab('Bus',this)">🚌 Bus</button>
+            <button onclick="changeTab('Train',this)">🚆 Train</button>
+            <button onclick="changeTab('Flight',this)">✈️ Flights</button>
+        </div>
+
+        <form class="search-form" onsubmit="searchTickets(event)">
+            <input type="text" id="from" placeholder="From / City" required>
+            <input type="text" id="to" placeholder="To / Destination" required>
+            <input type="date" id="date" required>
+            <select id="passengers">
+                <option value="1">1 Passenger</option>
+                <option value="2">2 Passengers</option>
+                <option value="3">3 Passengers</option>
+                <option value="4">4 Passengers</option>
+            </select>
+            <button type="submit" class="search-btn">Search Tickets</button>
+        </form>
+
+    </div>
+</section>
+
+<section class="section" id="movies">
+    <h2>🔥 Trending Movies</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="poster">🎬</div>
+            <div class="card-content">
+                <h3>Action Blockbuster</h3>
+                <p>⭐ 4.8 | Action / Thriller</p>
+                <a href="#booking" class="book-btn" onclick="selectTab('Movie')">Book Tickets</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="poster">🍿</div>
+            <div class="card-content">
+                <h3>Comedy Nights</h3>
+                <p>⭐ 4.6 | Comedy / Drama</p>
+                <a href="#booking" class="book-btn" onclick="selectTab('Movie')">Book Tickets</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="poster">🎭</div>
+            <div class="card-content">
+                <h3>Love Forever</h3>
+                <p>⭐ 4.7 | Romance</p>
+                <a href="#booking" class="book-btn" onclick="selectTab('Movie')">Book Tickets</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="poster">🚀</div>
+            <div class="card-content">
+                <h3>Space Adventure</h3>
+                <p>⭐ 4.9 | Sci-Fi / Adventure</p>
+                <a href="#booking" class="book-btn" onclick="selectTab('Movie')">Book Tickets</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="section" id="travel">
+    <h2>🌍 Explore Travel Options</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="poster">🚌</div>
+            <div class="card-content">
+                <h3>Bus Booking</h3>
+                <p>Comfortable journeys at affordable prices.</p>
+                <a href="#booking" class="book-btn" onclick="selectTab('Bus')">Book Bus</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="poster">🚆</div>
+            <div class="card-content">
+                <h3>Train Booking</h3>
+                <p>Discover destinations across India.</p>
+                <a href="#booking" class="book-btn" onclick="selectTab('Train')">Book Train</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="poster">✈️</div>
+            <div class="card-content">
+                <h3>Flight Booking</h3>
+                <p>Fly to your favourite destinations.</p>
+                <a href="#booking" class="book-btn" onclick="selectTab('Flight')">Book Flight</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="features" id="features">
+
+    <div class="feature">
+        <span>🔒</span>
+        <h3>Secure Booking</h3>
+        <p>Your booking information is protected.</p>
+    </div>
+
+    <div class="feature">
+        <span>⚡</span>
+        <h3>Quick Booking</h3>
+        <p>Simple and fast booking experience.</p>
+    </div>
+
+    <div class="feature">
+        <span>💳</span>
+        <h3>Easy Payments</h3>
+        <p>Convenient payment experience.</p>
+    </div>
+
+    <div class="feature">
+        <span>🎧</span>
+        <h3>24/7 Support</h3>
+        <p>We are here to help you.</p>
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 TicketEase. All Rights Reserved.</p>
+    <p>Designed for a better travel experience ❤️</p>
+</footer>
+
+<script>
+let selectedCategory = "Movie";
+
+function changeTab(category, button) {
+    selectedCategory = category;
+
+    document.querySelectorAll(".tabs button").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    const from = document.getElementById("from");
+    const to = document.getElementById("to");
+
+    if (category === "Movie") {
+        from.placeholder = "Enter City";
+        to.placeholder = "Movie / Theatre";
+    } else {
+        from.placeholder = "From City";
+        to.placeholder = "To City";
+    }
+}
+
+function selectTab(category) {
+    const buttons = document.querySelectorAll(".tabs button");
+    const index = ["Movie", "Bus", "Train", "Flight"].indexOf(category);
+    if (index >= 0) {
+        changeTab(category, buttons[index]);
+    }
+}
+
+function searchTickets(event) {
+    event.preventDefault();
+
+    const from = document.getElementById("from").value;
+    const to = document.getElementById("to").value;
+    const date = document.getElementById("date").value;
+    const passengers = document.getElementById("passengers").value;
+
+    alert(
+        "🎟 Ticket Search Request\n\n" +
+        "Category: " + selectedCategory +
+        "\nFrom: " + from +
+        "\nTo: " + to +
+        "\nDate: " + date +
+        "\nPassengers: " + passengers +
+        "\n\nThank you for choosing TicketEase!"
+    );
+}
+
+document.getElementById("date").min =
+    new Date().toISOString().split("T")[0];
+</script>
+
+</body>
+</html>
+
